@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+ 
+<html>
+<head>
+	  <title>Restaurant Pooling</title>
+	  <meta charset="utf-8" />
+	  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
+	  <script src="/js/loginController.js"></script>
+	  <!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />-->
+	  <link rel="stylesheet" href="/css/main.css" />
+	  
+	  
+</head>
+<body>
+ 
+<div class="container" ng-app="app">
+	<h1> Vamos almoçar? </h1>
+	<h3> Faça login e vote no seu restaurante preferido </h3>
+ 	<div ng-controller="loginController">
+		<form name="customerForm">
+	        <input type="text" name="username" placeholder = "username" class="form-control" ng-model="username"/>
+	        <input type="text" name="password" placeholder = "password" class="form-control" ng-model="password"/>
+	        <button ng-click=“login(username, password)”>Login</button>
+		</form>
+		<p>{{postResultMessage}}</p>
+		<p>{{username}}</p>
+		<p>{{password}}</p>
+		<p>{{url}}</p>
+	</div>
+	<div ng-controller="restaurantsController">
+	 	<h4> Esses são os Restaurantes disponíveis: </h4>
+		<table>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nome</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="r in rests">
+					<td>{{r.id}}</td>
+					<td>{{r.name}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+		<div ng-controller="usuariosController">
+	 	<h4> Usuários cadastrados no sistema: </h4>
+		<table>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Username</th>
+					<th>Senha</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="usr in users">
+					<td>{{usr.id}}</td>
+					<td>{{usr.name}}</td>
+					<td>{{usr.password}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+
+
+
+</div>
+</body>
+</html>
